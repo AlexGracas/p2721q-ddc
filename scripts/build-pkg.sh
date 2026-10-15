@@ -7,6 +7,7 @@ VERSION="${1:-1.0.0}"
 make clean >/dev/null && make
 mkdir -p build/root/usr/local/bin
 cp p2721q build/root/usr/local/bin/p2721q
+xattr -cr build/root 2>/dev/null || true
 pkgbuild --root build/root --filter '/\._' --filter '/\.DS_Store$' --identifier io.github.alexgracas.p2721q \
   --version "$VERSION" --install-location / "build/p2721q-$VERSION.pkg"
 echo "built build/p2721q-$VERSION.pkg"
